@@ -64,9 +64,12 @@ def main():
             json.dump(output, f, ensure_ascii=False, indent=2)
         print("foerderung.json gespeichert.")
 
-    except Exception as e:
+   except Exception as e:
         print(f"FEHLER: {type(e).__name__}: {e}")
         print(traceback.format_exc())
+        with open("debug.log", "w") as f:
+            f.write(f"FEHLER: {type(e).__name__}: {e}\n")
+            f.write(traceback.format_exc())
         sys.exit(1)
 
 if __name__ == "__main__":
