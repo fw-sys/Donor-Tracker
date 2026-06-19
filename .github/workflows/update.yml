@@ -2,7 +2,7 @@ name: Förderprogramme aktualisieren
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name "foerdertracker-bot"
           git config user.email "bot@wassermann.de"
-          git add foerderung.json debug.log || true
+          git add foerderung.json || true
           git diff --staged --quiet || git commit -m "Förderprogramme aktualisiert $(date +'%d.%m.%Y')"
           git push
